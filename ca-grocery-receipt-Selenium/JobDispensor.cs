@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 
-class JobDispensor {
+class JobDispensor
+{
     private ISubTask taskInterface;
     private List<ISubTask> tasksInterface;
 
@@ -12,7 +13,8 @@ class JobDispensor {
     //Executes the strategy  
     public void CompleteTheTask(ConfigDTO setting) => taskInterface.ExecuteTheTask(setting);
 
-    public void CompleteThoseTasks(ConfigDTO setting) {
+    public void CompleteThoseTasks(ConfigDTO setting)
+    {
         if (tasksInterface != null && tasksInterface.Count > 0)
             foreach (var aTask in tasksInterface)
                 aTask.ExecuteTheTask(setting);

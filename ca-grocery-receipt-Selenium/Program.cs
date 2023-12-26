@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
 
 class Program
 {
@@ -16,7 +15,7 @@ class Program
         };
         ProjectDTO projectConfig = new ProjectDTO()
         {
-            receiptCode = "123456 124578 6521 23564"
+            receiptCode = "110123 010101 77777 23564"
         };
         //////// end test case setting
 

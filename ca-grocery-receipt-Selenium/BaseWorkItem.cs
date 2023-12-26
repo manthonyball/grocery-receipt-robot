@@ -1,5 +1,6 @@
 ﻿
-public abstract class BaseWorkItem : IWorkItems {
+public abstract class BaseWorkItem : IWorkItems
+{
     protected int _jobSequence;
     public int jobSequence
     {
@@ -13,8 +14,9 @@ public abstract class BaseWorkItem : IWorkItems {
             _jobSequence = value;
         }
     }
-    public BaseWorkItem() {
+    public BaseWorkItem()
+    {
         //  Utility.LogInfo(this.GetType().Name);
     }
-    public abstract void ExecuteItems(ConfigDTO setting , ProjectDTO projectData);
+    public abstract void ExecuteItems(ConfigDTO setting, ProjectDTO projectData);
 }
