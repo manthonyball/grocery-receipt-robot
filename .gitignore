@@ -3,6 +3,8 @@
   
 # production
 /ca-grocery-receipt-Selenium/bin
+/ca-grocery-receipt-Selenium/bin/Debug/net8.0
+/ca-grocery-receipt-Selenium/bin/Debug/net8.0/runtimes
 /ca-grocery-receipt-Selenium/obj
 
 # misc
