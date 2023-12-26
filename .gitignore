@@ -5,7 +5,7 @@
 /ca-grocery-receipt-Selenium/bin
 /ca-grocery-receipt-Selenium/obj
 
-*/*.exe
+*.exe
 
 # misc
 .vs
