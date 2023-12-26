@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ca-grocery-receipt-Selenium")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3413083e2b22c470bba324922f82685d6ebf5dec")]
 [assembly: System.Reflection.AssemblyProductAttribute("ca-grocery-receipt-Selenium")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ca-grocery-receipt-Selenium")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

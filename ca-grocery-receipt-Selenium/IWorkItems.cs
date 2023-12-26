@@ -1,4 +1,4 @@
 ﻿
 public interface IWorkItems {
-    void ExecuteItems(ConfigDTO setting, ProductDTO productSetting);
+    void ExecuteItems(ConfigDTO setting, ProjectDTO projectData);
 }

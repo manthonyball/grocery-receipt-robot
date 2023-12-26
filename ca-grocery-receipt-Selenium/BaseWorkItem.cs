@@ -16,5 +16,5 @@ public abstract class BaseWorkItem : IWorkItems {
     public BaseWorkItem() {
         //  Utility.LogInfo(this.GetType().Name);
     }
-    public abstract void ExecuteItems(ConfigDTO setting, ProductDTO productSetting);
+    public abstract void ExecuteItems(ConfigDTO setting , ProjectDTO projectData);
 }
