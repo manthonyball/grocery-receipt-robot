@@ -8,8 +8,9 @@
         internal string code { private get; set; }
         internal virtual bool Validate()
         {
+            int result;
             //if contain non-numeric, error
-            if (int.TryParse(code, out int result))
+            if (!int.TryParse(code, out result))
                 return false;
 
             //if exceed max value or less than min value, error

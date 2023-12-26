@@ -53,6 +53,6 @@ public static class Utility
         }
         return (date - firstMonthMonday).Days / 7 + 1;
     }
-     
+
     #endregion
 }

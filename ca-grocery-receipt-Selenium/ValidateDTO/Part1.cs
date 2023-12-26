@@ -4,7 +4,7 @@
     {
         public Part1(string inputCode)
         {
-            expectedMaxValue = Utility.GetYearIn2Digi() + 12 + 31;
+            expectedMaxValue = int.Parse("31" + "31" + Utility.GetYearIn2Digi().ToString());
             expectedMinValue = Utility.GetYearIn2Digi();
             expectedLength = 6;
             code = inputCode;
@@ -18,7 +18,7 @@
         /// return true if the code is valid
         /// return false if the code is invalid
         /// </summary>
-       internal override bool Validate()
+        internal override bool Validate()
         {
             if (!base.Validate())
                 return false;

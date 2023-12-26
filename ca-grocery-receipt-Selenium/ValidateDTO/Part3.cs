@@ -8,6 +8,6 @@
             expectedMinValue = 1;
             expectedLength = 4;
             code = inputCode;
-        } 
+        }
     }
 }

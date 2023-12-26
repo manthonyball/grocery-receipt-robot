@@ -15,7 +15,7 @@ class Program
         };
         ProjectDTO projectConfig = new ProjectDTO()
         {
-            receiptCode = "110123 010101 77777 23564"
+            receiptCode = "010123 010101 7777 23564"
         };
         //////// end test case setting
 

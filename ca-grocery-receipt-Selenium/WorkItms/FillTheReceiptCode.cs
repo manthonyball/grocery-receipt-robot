@@ -19,15 +19,15 @@ namespace WebpageWorker
 
             Thread.Sleep(TimeSpan.FromSeconds(1));
         }
-         /// <summary>
-         /// this method will separate the code into 4 parts by ' ' 
-         /// initialize Part1, Part2,  Part3,  Part4 respectively
-         /// after initialize, it will call the validate method of each part to validate the code
-         /// return the expected if the code is valid
-         /// throw if the code is invalid
-         /// </summary>
-         /// <returns>(Part1, Part2, Part3, Part4)</returns>
-         /// 
+        /// <summary>
+        /// this method will separate the code into 4 parts by ' ' 
+        /// initialize Part1, Part2,  Part3,  Part4 respectively
+        /// after initialize, it will call the validate method of each part to validate the code
+        /// return the expected if the code is valid
+        /// throw if the code is invalid
+        /// </summary>
+        /// <returns>(Part1, Part2, Part3, Part4)</returns>
+        /// 
         private (Part1, Part2, Part3, Part4) GetParts(string code)
         {
             string[] parts = code.Split(' ');
