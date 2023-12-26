@@ -21,7 +21,7 @@ namespace WebpageWorker
         }
         /// <summary>
         /// this method will separate the code into 4 parts by ' ' 
-        /// initialize Part1, Part2,  Part3,  Part4 respectively
+        /// initialize Part1, Part2, Part3, Part4 respectively
         /// after initialize, it will call the validate method of each part to validate the code
         /// return the expected if the code is valid
         /// throw if the code is invalid
