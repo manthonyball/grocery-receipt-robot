@@ -11,11 +11,12 @@ class Program
         {
             environment = 'P',
             gender = 'm',
-            language = "en"
+            language = "en",
+            _timeout_second = 1
         };
         ProjectDTO projectConfig = new ProjectDTO()
         {
-            receiptCode = "010123 010101 7777 23564"
+            receiptCode = "122623 165025 1698 02809"
         };
         //////// end test case setting
 

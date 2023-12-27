@@ -17,7 +17,7 @@ namespace WebpageWorker
 
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
 
-            Thread.Sleep(TimeSpan.FromSeconds(1));
+            Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
         }
         /// <summary>
         /// this method will separate the code into 4 parts by ' ' 

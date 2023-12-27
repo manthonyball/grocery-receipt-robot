@@ -7,4 +7,5 @@ public class ConfigDTO
     public char environment { get; set; }
     public char gender { get; set; }
     public string language { get; set; }
+    public int _timeout_second { get; set; }
 }

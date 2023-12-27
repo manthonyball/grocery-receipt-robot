@@ -7,6 +7,7 @@ public static class JobList
     {
         List<BaseWorkItem> todayJobList = new List<BaseWorkItem>() { };
         todayJobList.Add(new WebpageWorker.FillTheReceiptCode() { jobSequence = 10 });
+        todayJobList.Add(new WebpageWorker.FillTheForm() { jobSequence = 20 });
         return todayJobList.OrderBy(seq => seq.jobSequence).ToList();
     }
 }
