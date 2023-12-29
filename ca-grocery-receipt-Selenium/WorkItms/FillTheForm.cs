@@ -1,13 +1,8 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using System;
 using System.Threading;
-using ValidateDTO;
 namespace WebpageWorker
 {
-    /***********
-     * [TODO] Is it some parts is ramdomly appeared? 
-     * *****/
     class FillTheForm : BaseWorkItem
     {
         public override void ExecuteItems(ConfigDTO setting, ProjectDTO projectData)
@@ -67,7 +62,6 @@ namespace WebpageWorker
             AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_1091134_473188']")).Click(); // Yes - no name® products
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
             Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
-
 
             // how do you feel the store  
             AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_827069_373212']")).Click(); // 4 agree - The store was clean and well maintained
@@ -158,15 +152,14 @@ namespace WebpageWorker
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
             Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
 
-            //////////////////////////////////////////////////////////////////////////  
+            //////////////////////////////////////////////////////////////////////////  Ramdom section 
 
             var trialCt = 0;
             while (trialCt < 2)
             {
-                WebDriverWait wait = new WebDriverWait(AutomatedDrivers.GetInstanceDriver(), TimeSpan.FromSeconds(5));
-                wait.PollingInterval = TimeSpan.FromMilliseconds(200);
-                wait.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
-                var title = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions
+                AutomatedDrivers.GetInstancePageWait().IgnoreExceptionTypes(typeof(StaleElementReferenceException));
+                // IgnoreExceptionTypes(typeof(NotFoundException));
+                var title = AutomatedDrivers.GetInstancePageWait().Until(SeleniumExtras.WaitHelpers.ExpectedConditions
                                           .ElementIsVisible(By.XPath("//div[@id='promptArea']//label[1]"))).Text;
 
                 if (title.Contains("agree with the following statements about this store?"))
@@ -205,10 +198,8 @@ namespace WebpageWorker
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("promptInput_374912")).SendKeys("Anthony");//First name  
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("promptInput_374913")).SendKeys("Lam");//Last name  
 
-
-            var _element = AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("promptInput_374914"));
-            IJavaScriptExecutor js = (IJavaScriptExecutor)AutomatedDrivers.GetInstanceDriver();
-            js.ExecuteScript("arguments[0].setAttribute('value', '4375991673 ')", _element);
+            var _element = AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("promptInput_374914")); //phone number
+            AutomatedDrivers.GetInstanceJSExecutor().ExecuteScript("arguments[0].setAttribute('value', '4375991673')", _element);
 
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("promptInput_374915")).SendKeys("fatball21@hotmail.com");//email
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("promptInput_374914")).SendKeys(" ");
