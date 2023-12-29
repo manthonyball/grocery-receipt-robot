@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Threading;
 using ValidateDTO;
@@ -10,12 +11,12 @@ namespace WebpageWorker
     class FillTheForm : BaseWorkItem
     {
         public override void ExecuteItems(ConfigDTO setting, ProjectDTO projectData)
-        { 
+        {
             // is age 18? 
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("choice_no_851262")).Click();
-            AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click(); 
+            AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
             Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
-             
+
             // isShopInStore
             AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_1076985_467488']")).Click();
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
@@ -93,7 +94,7 @@ namespace WebpageWorker
             Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
 
             // Which departments did you shop
-            AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='promptInput_373239']")).Click(); 
+            AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='promptInput_373239']")).Click();
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
             Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
 
@@ -124,11 +125,11 @@ namespace WebpageWorker
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
             Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
 
-              // is notified services provided? 
-              AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_926358_400929']")).Click(); // disagree 
-              AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("commentArea_400930")).SendKeys("points are hard to earn ; recommendation not good ");
-              AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
-              Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
+            // is notified services provided? 
+            AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_926358_400929']")).Click(); // disagree 
+            AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("commentArea_400930")).SendKeys("points are hard to earn ; recommendation not good ");
+            AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
+            Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
 
             // satisfied are you with the following aspects of the PC program
             AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_1260152_544472']")).Click(); // Moderately dissatisfied - The ability to earn points easily
@@ -157,24 +158,44 @@ namespace WebpageWorker
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
             Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
 
-            // someone in particular ?
-            AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_1063389_462180']")).Click();  //no
-            AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
-            Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
+            //////////////////////////////////////////////////////////////////////////  
 
-            // agree with the following statements about this store?
-            AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_827361_373330']")).Click(); // Agree - This store is at least as good as any other I would consider
-            AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_827351_373328']")).Click(); // 4 agree - Generally speaking, this store meets my needs
-            AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_827381_373334']")).Click(); // 4 agree - I would forgive this store if they made a mistake
-            AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_827384_373335']")).Click(); // disagree - I feel attached to this store
-            AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_1021081_443609']")).Click(); // disagree - Inspires me to eat and live well
-            AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_827374_373333']")).Click(); // disagree - This store makes me feel inspired/excited
-            AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_827370_373332']")).Click(); // neutral - I am proud to say that I am a customer of this store
-            AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_827356_373329']")).Click(); // 4 agree - This store is reliable
-            AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
-            Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
+            var trialCt = 0;
+            while (trialCt < 2)
+            {
+                WebDriverWait wait = new WebDriverWait(AutomatedDrivers.GetInstanceDriver(), TimeSpan.FromSeconds(5));
+                wait.PollingInterval = TimeSpan.FromMilliseconds(200);
+                wait.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
+                var title = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions
+                                          .ElementIsVisible(By.XPath("//div[@id='promptArea']//label[1]"))).Text;
 
-             
+                if (title.Contains("agree with the following statements about this store?"))
+                {
+                    // agree with the following statements about this store?
+                    AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_827361_373330']")).Click(); // Agree - This store is at least as good as any other I would consider
+                    AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_827351_373328']")).Click(); // 4 agree - Generally speaking, this store meets my needs
+                    AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_827381_373334']")).Click(); // 4 agree - I would forgive this store if they made a mistake
+                    AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_827384_373335']")).Click(); // disagree - I feel attached to this store
+                    AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_1021081_443609']")).Click(); // disagree - Inspires me to eat and live well
+                    AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_827374_373333']")).Click(); // disagree - This store makes me feel inspired/excited
+                    AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_827370_373332']")).Click(); // neutral - I am proud to say that I am a customer of this store
+                    AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_827356_373329']")).Click(); // 4 agree - This store is reliable
+                    AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_827366_373331']")).Click(); // 4 agree - I trust this store
+
+                    AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
+                    Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
+                }
+                else if (title.Contains("someone in particular"))
+                {
+                    // someone in particular ?
+                    AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_1063389_462180']")).Click();  //no ?? 
+                    AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
+                    Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
+                }
+                else { new Exception("title is not expected!!!"); }
+                trialCt++;
+            }
+
             /**************************************************************
             * contact information
             **************************************************************/
@@ -183,11 +204,17 @@ namespace WebpageWorker
             AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_914991_396044']")).Click(); // yes
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("promptInput_374912")).SendKeys("Anthony");//First name  
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("promptInput_374913")).SendKeys("Lam");//Last name  
-            AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("promptInput_374914")).SendKeys("4375991673");//phone number
+
+
+            var _element = AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("promptInput_374914"));
+            IJavaScriptExecutor js = (IJavaScriptExecutor)AutomatedDrivers.GetInstanceDriver();
+            js.ExecuteScript("arguments[0].setAttribute('value', '4375991673 ')", _element);
+
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("promptInput_374915")).SendKeys("fatball21@hotmail.com");//email
+            AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("promptInput_374914")).SendKeys(" ");
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
             Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
-             
+
             /**************************************************************
             * submit
             **************************************************************/
