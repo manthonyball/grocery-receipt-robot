@@ -8,4 +8,7 @@ public class ConfigDTO
     public char gender { get; set; }
     public string language { get; set; }
     public int _timeout_second { get; set; }
+    public string driver_path { get; set; }
+    public string logPath { get; set; }
+    public string url { get; set; }
 }

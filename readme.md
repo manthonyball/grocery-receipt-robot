@@ -5,10 +5,10 @@ A. Dot Net Framework set-up
 B. Update WebDriver in your local machine
   1. Driver located in "C:\TFS\seleniumDriver"
   2. Driver can be found in https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/ 
-  3. (Or) Configure the path in Utilities.AutomatedDrivers.GetDriver()
+  3. (Or) Configure the path in appsettings.json
 
 C. Project set-up
   1. Configure Utilities.Utility.cs -> GetURL()
   2. Configure Utilities.JobList.cs 
-  3. Configure DTO.ConfigDTO.cs 
+  3. Configure appsettings.json (json -> DTO) 
   4. Configure DTO.ProjectDTO.cs  

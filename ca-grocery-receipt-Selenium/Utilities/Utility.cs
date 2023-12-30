@@ -4,12 +4,23 @@ using System.IO;
 
 public static class Utility
 {
-
+    private static string _logPath = @"C:\TFS\WriteLines.txt";
+    private static string _URL = "";
+    /// <summary>
+    /// this is the only method that is called from outside to initialize the private variables in utility
+    /// </summary>
+    /// <param name="config"></param>
+    ///     
+    public static void Configure(ConfigDTO config)
+    {
+        _logPath = config.logPath;
+        _URL = config.url;
+    }
+     
     #region "project specific"
-    public static void LogInfo(string i) => File.AppendAllText(@"C:\TFS\WriteLines.txt", i + "," + DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff tt") + Environment.NewLine);
+    public static void LogInfo(string i) => File.AppendAllText(_logPath, i + "," + DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff tt") + Environment.NewLine);
 
-    public static string GetURL()
-        => $"https://www.storeopinion.ca/";
+    public static string GetURL() => _URL;
 
     #endregion
 

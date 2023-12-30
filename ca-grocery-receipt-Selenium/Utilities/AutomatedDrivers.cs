@@ -3,8 +3,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
 
-
-public class AutomatedDrivers
+public static class AutomatedDrivers
 {
     private static IWebDriver _driver;
     private static IJavaScriptExecutor _jsExecutor;
@@ -12,6 +11,11 @@ public class AutomatedDrivers
     private const int timeOut_second_page = 5;
     private const int timeOut_second_global = 15;
     private const int polling_interval_ms = 250;
+    private static string driver_path; 
+    public static void ConfigureDriver(ConfigDTO config)
+    {
+        driver_path = config.driver_path;
+    }
     private static IWebDriver GetDriver()
     {
         ChromeOptions options = new ChromeOptions();
@@ -31,7 +35,7 @@ public class AutomatedDrivers
         // using (IWebDriver driver = new FirefoxDriver(@"C:\TFS\seleniumDriver")) {
         // using (IWebDriver driver = new EdgeDriver(@"C:\TFS\seleniumDriver\edgedriver_win64\")) {
 
-        return new ChromeDriver(@"C:\TFS\seleniumDriver", options);
+        return new ChromeDriver(driver_path, options);
         //return new ChromeDriver(@"C:\TFS\seleniumDriver");
     }
     public static IWebDriver GetInstanceDriver()
