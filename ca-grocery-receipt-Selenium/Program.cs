@@ -1,7 +1,5 @@
-﻿using System;
-using System.Configuration;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.EnvironmentVariables;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 
 class Program
 {
@@ -20,7 +18,7 @@ class Program
 
         ProjectDTO projectConfig = new ProjectDTO()
         {
-            receiptCode = "122623 155625 1698 02809"
+            receiptCode = "122623 123319 1698 02809"
         };
         //////// end test case setting
 

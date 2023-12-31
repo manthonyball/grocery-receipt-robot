@@ -9,6 +9,6 @@ B. Update WebDriver in your local machine
 
 C. Project set-up
   1. Configure Utilities.Utility.cs -> GetURL()
-  2. Configure Utilities.JobList.cs 
+  2. Configure JobList.cs 
   3. Configure appsettings.json (json -> DTO) 
   4. Configure DTO.ProjectDTO.cs  

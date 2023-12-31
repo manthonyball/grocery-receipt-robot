@@ -16,7 +16,7 @@ public static class Utility
         _logPath = config.logPath;
         _URL = config.url;
     }
-     
+
     #region "project specific"
     public static void LogInfo(string i) => File.AppendAllText(_logPath, i + "," + DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff tt") + Environment.NewLine);
 

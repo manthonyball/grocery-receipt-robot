@@ -11,4 +11,8 @@ public class ConfigDTO
     public string driver_path { get; set; }
     public string logPath { get; set; }
     public string url { get; set; }
+    public string fName { get; set; }
+    public string lName { get; set; }
+    public string phoneName { get; set; }
+    public string email { get; set; }
 }

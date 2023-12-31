@@ -11,7 +11,7 @@ public static class AutomatedDrivers
     private const int timeOut_second_page = 5;
     private const int timeOut_second_global = 15;
     private const int polling_interval_ms = 250;
-    private static string driver_path; 
+    private static string driver_path;
     public static void ConfigureDriver(ConfigDTO config)
     {
         driver_path = config.driver_path;

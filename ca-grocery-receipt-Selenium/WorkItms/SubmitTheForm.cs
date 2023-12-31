@@ -9,7 +9,7 @@ namespace WebpageWorker
         {
             /**************************************************************
             * submit
-            **************************************************************/ 
+            **************************************************************/
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
             Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
         }
