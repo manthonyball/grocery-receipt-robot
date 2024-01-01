@@ -3,8 +3,9 @@
 * Class generated in 2023 
 ****/
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
-using System.Threading;
+using System.Threading; 
 
 namespace WebpageWorker
 {
@@ -43,15 +44,18 @@ namespace WebpageWorker
                 }
                 else if (title.Contains("someone in particular"))
                 {
-                    // someone in particular ?
-
                     AutomatedDrivers.GetInstancePageWait().IgnoreExceptionTypes(typeof(StaleElementReferenceException)); 
                     AutomatedDrivers.GetInstancePageWait().Until(SeleniumExtras.WaitHelpers.ExpectedConditions
                                              .ElementIsVisible(By.XPath("//label[@for='option_1063389_462180']"))).Click(); //no    
                     Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
                 }
-                else { new Exception("title is not expected!!!"); return; }
                 AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
+                title = ""; 
+                 
+                WebDriverWait wait = AutomatedDrivers.GetInstancePageWait();
+                wait.Until(wd => AutomatedDrivers.GetInstanceJSExecutor().ExecuteScript("return document.readyState").ToString() == "complete");
+
+                Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second*2));
                 trialCt++;
             }
         }
