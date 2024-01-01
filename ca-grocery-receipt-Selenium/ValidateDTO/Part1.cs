@@ -1,4 +1,8 @@
-﻿namespace ValidateDTO
+﻿using System;
+using System.Globalization;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace ValidateDTO
 {
     public class Part1 : PartBase
     {
@@ -9,24 +13,43 @@
             expectedLength = 6;
             code = inputCode;
         }
+
         /// <summary>
         /// this method will validate the code by calling the base class and with the following rules:
-        /// the last 2 digit of the year must be the same / +1 as the year within 7 days   
-        /// for e.g. purchase date is 2019/12/31, the last 2 digit of the year must be 19 (current year) or 20 (next year)
-        /// for e.g. purchase date is 2019/12/01, the last 2 digit of the year must be 19 (current year) but not others
-        /// the format of the code sometimes is mmddyy, sometimes is ddmmyy, so we need to check the last 2 digit of the year
+        /// the code in mmddyy / ddmmyy is within 7 days of the current day
         /// return true if the code is valid
         /// return false if the code is invalid
         /// </summary>
+        /// 
         internal override bool Validate()
         {
+            //format validation
             if (!base.Validate())
                 return false;
 
-            //if the last 2 digit of the year is not the same / +1 as the year within 7 days, error
-            if (base.GetCode().Substring(4, 2) != Utility.GetYearIn2Digi().ToString()
-                && base.GetCode().Substring(4, 2) != (Utility.GetYearIn2Digi() + 1).ToString())
+            if (!Utility.DateTimeExactParser(base.GetCode(), "MMddyy") 
+                 && !Utility.DateTimeExactParser(base.GetCode(), "ddMMyy")) 
                 return false;
+
+            //biz logic validation
+            int month = int.Parse(base.GetCode().Substring(0, 2));
+            int day = int.Parse(base.GetCode().Substring(2, 2));
+            int year = int.Parse(base.GetCode().Substring(4, 2)) + 2000;
+
+            //to handle mmddyy / ddmmyy
+            if (month > 12 && month < 32)
+            {
+                var tmp_day = day;
+                day = month;
+                month = tmp_day;
+            }
+
+            // should be within past 7 days of the current day
+            var receiptDate = new DateTime(year, month, day);
+            if ((receiptDate.Date - DateTime.Now.AddDays(-7).Date).TotalDays <= 0)
+            {
+                return false;
+            }
 
             return true;
         }

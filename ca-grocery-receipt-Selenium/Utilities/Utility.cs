@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 
 
@@ -27,6 +28,7 @@ public static class Utility
     #region "Generic"
 
     public static int GetYearIn2Digi() => DateTime.Now.Year % 100;
+    public static bool DateTimeExactParser(string dValue, string format) => DateTime.TryParseExact(dValue, format, null, DateTimeStyles.None, out DateTime Date2);
 
     public static string GetMonthEngName(int i)
     {
