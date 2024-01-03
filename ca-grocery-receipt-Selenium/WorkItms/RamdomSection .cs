@@ -14,6 +14,9 @@ namespace WebpageWorker
         public override void ExecuteItems(ConfigDTO setting, ProjectDTO projectData)
         {
             Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
+            WebDriverWait wait = AutomatedDrivers.GetInstancePageWait();
+            wait.Until(wd => AutomatedDrivers.GetInstanceJSExecutor().ExecuteScript("return document.readyState").ToString() == "complete");
+
             //  Ramdom section  
             var trialCt = 0;
             while (trialCt < 2)
@@ -38,7 +41,7 @@ namespace WebpageWorker
                         { "option_1021081_443609","disagree - Inspires me to eat and live well"},
                      }; // 9 items
 
-                    ClickItems(setting, itemsArray, isByXpath: true);
+                    ClickItems(setting, itemsArray, clickMethod:ClickMethod.ClickByXPath);
                      
                     Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
                 }
@@ -52,7 +55,6 @@ namespace WebpageWorker
                 AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
                 title = ""; 
                  
-                WebDriverWait wait = AutomatedDrivers.GetInstancePageWait();
                 wait.Until(wd => AutomatedDrivers.GetInstanceJSExecutor().ExecuteScript("return document.readyState").ToString() == "complete");
 
                 Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second*2));

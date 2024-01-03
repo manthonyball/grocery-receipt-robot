@@ -6,7 +6,7 @@ public abstract class BaseWorkItem : IWorkItems
 {
     protected int _jobSequence;
     public int jobSequence { get { return _jobSequence; } set { _jobSequence = value; } }
-    
+
     public BaseWorkItem()
     {
         //  Utility.LogInfo(this.GetType().Name);
@@ -18,15 +18,45 @@ public abstract class BaseWorkItem : IWorkItems
         if (isDelay)
             System.Threading.Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
     }
-
-    public virtual void ClickItems<T>(ConfigDTO setting, T[,] itemList, bool isByXpath, bool isDelay = false)  //multi-dimension array
+    private void ClickItemsById(ConfigDTO setting, string itemIdentifier, bool isDelay)
     {
-        for (int i = 0; i < itemList.GetLength(0); i++) 
-                if (isByXpath) ClickItemsByXPath(setting, @"//label[@for='" + itemList[i,0] + "']", isDelay); 
+        AutomatedDrivers.GetInstanceDriver().FindElement(By.Id(itemIdentifier)).Click();
+        if (isDelay)
+            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
     }
-    public virtual void ClickItems<T>(ConfigDTO setting, T itemList, bool isByXpath, bool isDelay = false) where T : IEnumerable<string>  // 1 dimension array
+
+    public virtual void ClickItems<T>(ConfigDTO setting, T[,] itemList, ClickMethod clickMethod, bool isDelay = false)  //multi-dimension array
+    {
+        for (int i = 0; i < itemList.GetLength(0); i++)
+        {
+            switch (clickMethod)
+            {
+                case ClickMethod.ClickByXPath:
+                    ClickItemsByXPath(setting, @"//label[@for='" + itemList[i, 0] + "']", isDelay);
+                    break;
+                case ClickMethod.ClickById:
+                    ClickItemsById(setting, itemList[i, 0].ToString(), isDelay);
+                    break;
+                default:
+                    break;
+            } 
+        }
+    }
+    public virtual void ClickItems<T>(ConfigDTO setting, T itemList, ClickMethod clickMethod, bool isDelay = false) where T : IEnumerable<string>  // 1 dimension array
     {
         foreach (var i in itemList)
-            if (isByXpath) ClickItemsByXPath(setting, @"//label[@for='" + i + "']", isDelay);
+        {
+            switch (clickMethod)
+            {
+                case ClickMethod.ClickByXPath:
+                    ClickItemsByXPath(setting, @"//label[@for='" + i + "']", isDelay);
+                    break;
+                case ClickMethod.ClickById:
+                    ClickItemsByXPath(setting, i , isDelay);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
