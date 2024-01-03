@@ -1,3 +1,7 @@
+This repository is to automate the repetitive data entry action of the grocey feedback form using Selenium. 
+Here, the framework use is Dot Not 8 with OpenQA.
+The flow is yet to complete. 
+
 A. Dot Net Framework set-up
   1. Right click on the *.csproj 
   2. configure the section "Target framework"  
