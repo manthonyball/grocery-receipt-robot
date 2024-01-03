@@ -1,0 +1,12 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+  
+# production 
+/ca-grocery-receipt-Selenium/bin
+/ca-grocery-receipt-Selenium/obj
+
+*.exe
+
+# misc
+.vs
+ 
