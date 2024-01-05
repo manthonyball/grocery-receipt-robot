@@ -16,7 +16,7 @@ class Program
 
         //////// start test case setting
 
-        ProjectDTO projectConfig = new ProjectDTO()
+        ProjectDTO projectData = new ProjectDTO()
         {
             receiptCode = "122923 123219 1698 02809"
         };
@@ -27,7 +27,7 @@ class Program
         //start the job 
         AutomatedDrivers.GetInstanceDriver().Navigate().GoToUrl(Utility.GetURL());
         foreach (IWorkItems aJob in JobList.GetJobList())
-            aJob.ExecuteItems(settings, projectConfig);
+            aJob.ExecuteItems(settings, projectData);
 
         Utility.LogInfo("--------------------------------------");
         Console.ReadKey();
