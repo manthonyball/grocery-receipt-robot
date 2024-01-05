@@ -27,8 +27,8 @@ namespace ValidateDTO
             if (!base.Validate())
                 return false;
 
-            if (!Utility.DateTimeExactParser(base.GetCode(), "MMddyy") 
-                 && !Utility.DateTimeExactParser(base.GetCode(), "ddMMyy")) 
+            if (!Utility.DateTimeExactParser(base.GetCode(), "MMddyy")
+                 && !Utility.DateTimeExactParser(base.GetCode(), "ddMMyy"))
                 return false;
 
             //biz logic validation
@@ -36,12 +36,12 @@ namespace ValidateDTO
             int day = int.Parse(base.GetCode().Substring(2, 2));
             int year = int.Parse(base.GetCode().Substring(4, 2)) + 2000;
 
-            //to handle mmddyy / ddmmyy
-            if (month > 12 && month < 32)
+            //to handle mmddyy / ddmmyy format
+            if (month is > 12 and < 32)
             {
                 var tmp_day = day;
                 day = month;
-                month = tmp_day;
+                month = tmp_day; 
             }
 
             // should be within past 7 days of the current day
