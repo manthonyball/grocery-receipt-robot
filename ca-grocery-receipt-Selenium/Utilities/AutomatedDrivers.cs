@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Threading;
 
 public static class AutomatedDrivers
 {
@@ -54,6 +55,17 @@ public static class AutomatedDrivers
 
         _pageWait.PollingInterval = TimeSpan.FromMilliseconds(polling_interval_ms);
         return _pageWait;
+    }
+    public static void TurnOffDeMachine()
+    {
+        Utility.LogInfo("Turning off the machine...");
+        if (_driver is not null)
+        {
+            Thread.Sleep(TimeSpan.FromSeconds(timeOut_second_page));
+            _driver.Close();
+            _driver.Quit();
+        }
+        Utility.LogInfo("Done");
     }
     public static IJavaScriptExecutor GetInstanceJSExecutor()
     {
