@@ -14,11 +14,12 @@
                 return false;
 
             //if exceed max value or less than min value, error
-            if (result > expectedMaxValue || result <= expectedMinValue)
+            if (IsInvalidRange(result))
                 return false;
 
             return true;
         }
+        private bool IsInvalidRange(int result) => result > expectedMaxValue || result <= expectedMinValue;
         //format code to expected length
         public string GetCode() => code.PadLeft(expectedLength, '0');
     }
