@@ -5,6 +5,9 @@ public static class JobList
     //if diveded by 10 has no remainder => major step; otherwise, optional items
     public static List<BaseWorkItem> GetJobList()
     {
+        // return an empty list if no need to run 
+        // return Enumerable.Empty<BaseWorkItem>();
+         
         List<BaseWorkItem> todayJobList =
         [
             new WebpageWorker.FillTheReceiptCode() { jobSequence = 10 },
