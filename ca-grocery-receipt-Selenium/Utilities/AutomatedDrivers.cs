@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Threading;
 
 public static class AutomatedDrivers
 {
@@ -19,6 +20,10 @@ public static class AutomatedDrivers
     private static IWebDriver GetDriver()
     {
         ChromeOptions options = new ChromeOptions();
+        
+        //use specific profile
+       // options.AddArgument("user-data-dir=C:/Users/xw20/AppData/Local/Google/Chrome/User Data/Profile 2");
+
         // options.BinaryLocation = @"C:\TFS\seleniumDriver\ungoogled-chromium_97.0.4692.71-1.1_windows\chrome.exe";
         options.PageLoadStrategy = PageLoadStrategy.Normal; // since corpSite loads dynamically 
                                                             //options.PageLoadStrategy = PageLoadStrategy.Eager;
@@ -54,6 +59,17 @@ public static class AutomatedDrivers
 
         _pageWait.PollingInterval = TimeSpan.FromMilliseconds(polling_interval_ms);
         return _pageWait;
+    }
+    public static void TurnOffDeMachine()
+    {
+        Utility.LogInfo("Turning off the machine...");
+        if (_driver is not null)
+        {
+            Thread.Sleep(TimeSpan.FromSeconds(timeOut_second_page));
+            _driver.Close();
+            _driver.Quit();
+        }
+        Utility.LogInfo("Done");
     }
     public static IJavaScriptExecutor GetInstanceJSExecutor()
     {
