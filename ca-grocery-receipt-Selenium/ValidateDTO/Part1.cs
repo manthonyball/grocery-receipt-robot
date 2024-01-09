@@ -32,9 +32,9 @@ namespace ValidateDTO
                 return false;
 
             //biz logic validation
-            int month = int.Parse(base.GetCode().Substring(0, 2));
-            int day = int.Parse(base.GetCode().Substring(2, 2));
-            int year = int.Parse(base.GetCode().Substring(4, 2)) + 2000;
+            int month = int.Parse(base.GetCode().AsSpan(0, 2));
+            int day = int.Parse(base.GetCode().AsSpan(2, 2));
+            int year = int.Parse(base.GetCode().AsSpan(4, 2)) + 2000;
 
             //to handle mmddyy / ddmmyy format ; relational pattern matching
             if (month is > 12 and < 32)
