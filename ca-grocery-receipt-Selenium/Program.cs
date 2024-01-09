@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
+using System.Linq;
 
 class Program
 {
@@ -20,13 +21,17 @@ class Program
             receiptCode = "010624 123219 1698 02809"
         };
         //////// end test case setting
-         
+
         //start the job 
         try
         {
             AutomatedDrivers.GetInstanceDriver().Navigate().GoToUrl(Utility.GetURL());
-            foreach (IWorkItems aJob in JobList.GetJobList())
-                aJob.ExecuteItems(settings, projectData); 
+            var jobList = JobList.GetJobList();
+            if (jobList.Any())
+                foreach (IWorkItems aJob in jobList)
+                    aJob.ExecuteItems(settings, projectData);
+            else 
+                Utility.LogInfo("No job to run");
         }
         catch (Exception e)
         {
