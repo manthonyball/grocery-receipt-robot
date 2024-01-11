@@ -31,7 +31,7 @@ namespace test_grcery_receipt
         }
         [TestCase("011212", true)]
         [TestCase("235959", true)]
-        [TestCase("121256", true)] 
+        [TestCase("121256", true)]
         [TestCase("999999", false)]
         [TestCase("129956", false)]
         [TestCase("991256", false)]

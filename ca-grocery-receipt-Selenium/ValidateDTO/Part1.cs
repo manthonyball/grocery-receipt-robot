@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Globalization;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ValidateDTO
 {
@@ -34,14 +32,14 @@ namespace ValidateDTO
             //biz logic validation
             int month = int.Parse(base.GetCode().AsSpan(0, 2));
             int day = int.Parse(base.GetCode().AsSpan(2, 2));
-            int year = int.Parse(base.GetCode().AsSpan(4, 2)) + (DateTime.Now.Year/1000 ) * 1000;
+            int year = int.Parse(base.GetCode().AsSpan(4, 2)) + (DateTime.Now.Year / 1000) * 1000;
 
             //to handle mmddyy / ddmmyy format ; relational pattern matching
             if (month is > 12 and < 32)
             {
                 var tmp_day = day;
                 day = month;
-                month = tmp_day; 
+                month = tmp_day;
             }
 
             // should be within past 7 days of the current day

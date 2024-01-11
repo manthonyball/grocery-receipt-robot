@@ -1,18 +1,18 @@
 ﻿using System;
-public record ConfigDTO(char environment, 
-    char gender, 
-    string language, 
-    int _timeout_second, 
-    string driver_path, 
+public record ConfigDTO(char environment,
+    char gender,
+    string language,
+    int _timeout_second,
+    string driver_path,
     string logPath,
     string url,
     string fName,
     string lName,
     string phoneName,
-    string email 
-    ); 
+    string email
+    );
 
-    public class ConfigDTO_OldWay
+public class ConfigDTO_OldWay
 {
     public DateTime _todayIs = DateTime.Now;
     public DateTime todayIs => _todayIs;

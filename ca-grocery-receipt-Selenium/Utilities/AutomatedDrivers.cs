@@ -20,9 +20,9 @@ public static class AutomatedDrivers
     private static IWebDriver GetDriver()
     {
         ChromeOptions options = new ChromeOptions();
-        
+
         //use specific profile
-       // options.AddArgument("user-data-dir=C:/Users/xw20/AppData/Local/Google/Chrome/User Data/Profile 2");
+        // options.AddArgument("user-data-dir=C:/Users/xw20/AppData/Local/Google/Chrome/User Data/Profile 2");
 
         // options.BinaryLocation = @"C:\TFS\seleniumDriver\ungoogled-chromium_97.0.4692.71-1.1_windows\chrome.exe";
         options.PageLoadStrategy = PageLoadStrategy.Normal; // since corpSite loads dynamically 

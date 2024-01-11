@@ -12,7 +12,7 @@ public static class JobList
      ***********/
 
     private static List<(string, bool, int)> deJobSetUp = new List<(string, bool, int)>()
-     { 
+     {
         ("FillTheReceiptCode", true, 10),
         ("FillTheForm", true, 20),
         ("RamdomSection", true, 30),

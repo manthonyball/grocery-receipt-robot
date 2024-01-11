@@ -19,7 +19,7 @@
 
             return true;
         }
-        private bool IsInvalidRange(int result) => 
+        private bool IsInvalidRange(int result) =>
             result > expectedMaxValue ||
              result <= expectedMinValue;
 

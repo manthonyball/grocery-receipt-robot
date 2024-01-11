@@ -30,7 +30,7 @@ class Program
             if (jobList.Any())
                 foreach (IWorkItems aJob in jobList)
                     aJob.ExecuteItems(settings, projectData);
-            else 
+            else
                 Utility.LogInfo("No job to run");
         }
         catch (Exception e)

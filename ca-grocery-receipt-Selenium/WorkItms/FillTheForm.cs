@@ -42,23 +42,23 @@ namespace WebpageWorker
             Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
 
             // is notified services provided? 
-          //  string[,] itemsArray = {
-          //             { "option_yes_376796", "NO - PC Express Pick-up (Click & Collect)"},
-          //             { "option_yes_376800", "NO - Optical service (Theodore and Pringle)"},
-          //             { "option_no_376801 ", "Yes - PC Optimum"},
-          //             { "option_yes_376802", "NO - In-store pharmacy"},
-          //             { "option_yes_478149", "NO - The Mobile Shop"},
-          //             { "option_yes_478150", "NO - PC Financial Pavilion"}
-          //           }; 
-          // ClickItems(setting, itemsArray, clickMethod: ClickMethod.ClickByXPath, isDelay:true);
+            //  string[,] itemsArray = {
+            //             { "option_yes_376796", "NO - PC Express Pick-up (Click & Collect)"},
+            //             { "option_yes_376800", "NO - Optical service (Theodore and Pringle)"},
+            //             { "option_no_376801 ", "Yes - PC Optimum"},
+            //             { "option_yes_376802", "NO - In-store pharmacy"},
+            //             { "option_yes_478149", "NO - The Mobile Shop"},
+            //             { "option_yes_478150", "NO - PC Financial Pavilion"}
+            //           }; 
+            // ClickItems(setting, itemsArray, clickMethod: ClickMethod.ClickByXPath, isDelay:true);
 
-              AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_yes_376796']")).Click(); //  NO - PC Express Pick-up (Click & Collect)
-              AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_yes_376800']")).Click(); // NO - Optical service (Theodore and Pringle)
-              AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_no_376801']")).Click(); // Yes - PC Optimum
-              AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_yes_376802']")).Click(); // NO - In-store pharmacy
-              AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_yes_478149']")).Click(); // NO - The Mobile Shop
-              AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_yes_478150']")).Click(); // NO - PC Financial Pavilion
-              AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
+            AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_yes_376796']")).Click(); //  NO - PC Express Pick-up (Click & Collect)
+            AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_yes_376800']")).Click(); // NO - Optical service (Theodore and Pringle)
+            AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_no_376801']")).Click(); // Yes - PC Optimum
+            AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_yes_376802']")).Click(); // NO - In-store pharmacy
+            AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_yes_478149']")).Click(); // NO - The Mobile Shop
+            AutomatedDrivers.GetInstanceDriver().FindElement(By.XPath("//label[@for='option_yes_478150']")).Click(); // NO - PC Financial Pavilion
+            AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("nextPageLink")).Click();
             Thread.Sleep(TimeSpan.FromSeconds(setting._timeout_second));
 
             // is enter lucky draw? 

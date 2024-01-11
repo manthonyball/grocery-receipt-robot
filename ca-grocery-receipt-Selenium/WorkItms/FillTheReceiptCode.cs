@@ -9,7 +9,7 @@ namespace WebpageWorker
         public override void ExecuteItems(ConfigDTO setting, ProjectDTO projectData)
         {
             var (part1, part2, part3, part4) = GetParts(projectData.receiptCode);
-             
+
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("promptInput_397048_0")).SendKeys(part1.GetCode());
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("promptInput_397048_1")).SendKeys(part2.GetCode());
             AutomatedDrivers.GetInstanceDriver().FindElement(By.Id("promptInput_397048_2")).SendKeys(part3.GetCode());

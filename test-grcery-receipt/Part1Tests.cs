@@ -2,7 +2,7 @@ using ValidateDTO;
 namespace test_grcery_receipt
 {
     public class Part1Tests
-    {   
+    {
         [Test]
         [Category("Validator")]
         public void Part1_ValidCode_ddMMyy_ReturnTrue()
@@ -69,7 +69,7 @@ namespace test_grcery_receipt
             if (expectedResult)
                 Assert.IsTrue(result);
             else
-                Assert.IsFalse(result); 
+                Assert.IsFalse(result);
         }
     }
 }
