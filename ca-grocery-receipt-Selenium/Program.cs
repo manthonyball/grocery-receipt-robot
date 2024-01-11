@@ -21,7 +21,7 @@ class Program
             receiptCode = "010624 123219 1698 02809"
         };
         //////// end test case setting
-
+         
         /////start testing  
 
         //start the job 

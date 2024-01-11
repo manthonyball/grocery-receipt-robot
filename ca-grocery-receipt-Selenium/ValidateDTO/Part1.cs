@@ -41,7 +41,7 @@ namespace ValidateDTO
             {
                 var tmp_day = day;
                 day = month;
-                month = tmp_day;
+                month = tmp_day; 
             }
 
             // should be within past 7 days of the current day
