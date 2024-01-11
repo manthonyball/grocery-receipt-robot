@@ -2,11 +2,11 @@
 {
     public class PartBase
     {
-        internal int expectedMaxValue = 0;
-        internal int expectedMinValue = 0;
-        internal int expectedLength = 0;
-        internal string code { private get; set; }
-        internal virtual bool Validate()
+        protected int expectedMaxValue { get; init; }
+        protected int expectedMinValue { get; init; }
+        protected int expectedLength { get; init; }
+        protected string code { private get; init; }
+        public virtual bool Validate()
         {
             int result;
             //if contain non-numeric, error
@@ -19,7 +19,10 @@
 
             return true;
         }
-        private bool IsInvalidRange(int result) => result > expectedMaxValue || result <= expectedMinValue;
+        private bool IsInvalidRange(int result) =>
+            result > expectedMaxValue ||
+             result <= expectedMinValue;
+
         //format code to expected length
         public string GetCode() => code.PadLeft(expectedLength, '0');
     }

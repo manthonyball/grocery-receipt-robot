@@ -1,7 +1,11 @@
 ﻿using System.Diagnostics;
 
 [DebuggerDisplay("Code on the receipt: {receiptCode}")]
-public class ProjectDTO
+public struct ProjectDTO
 { 
     public string receiptCode = "";
+
+    public ProjectDTO()
+    {
+    }
 }
