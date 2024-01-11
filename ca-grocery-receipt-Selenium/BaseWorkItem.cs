@@ -39,7 +39,7 @@ public abstract class BaseWorkItem : IWorkItems
                     break;
                 default:
                     break;
-            } 
+            }
         }
     }
     public virtual void ClickItems<T>(ConfigDTO setting, T itemList, ClickMethod clickMethod, bool isDelay = false) where T : IEnumerable<string>  // 1 dimension array
@@ -52,7 +52,7 @@ public abstract class BaseWorkItem : IWorkItems
                     ClickItemsByXPath(setting, @"//label[@for='" + i + "']", isDelay);
                     break;
                 case ClickMethod.ClickById:
-                    ClickItemsByXPath(setting, i , isDelay);
+                    ClickItemsByXPath(setting, i, isDelay);
                     break;
                 default:
                     break;

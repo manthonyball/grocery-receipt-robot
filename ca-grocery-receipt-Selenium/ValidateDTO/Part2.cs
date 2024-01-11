@@ -1,4 +1,6 @@
-﻿namespace ValidateDTO
+﻿using System;
+
+namespace ValidateDTO
 {
     public class Part2 : PartBase
     {
@@ -19,21 +21,21 @@
         /// </summary> 
         /// <returns>bool</returns>
         ///
-        internal override bool Validate()
+        public override bool Validate()
         {
             if (!base.Validate())
                 return false;
 
             //if the first 2 digit is not 00-23, error
-            if (int.Parse(base.GetCode().Substring(0, 2)) > 23)
+            if (int.Parse(base.GetCode().AsSpan(0, 2)) > 23)
                 return false;
 
             //if the 2 and 3 digit is not 00-59, error
-            if (int.Parse(base.GetCode().Substring(2, 2)) > 59)
+            if (int.Parse(base.GetCode().AsSpan(2, 2)) > 59)
                 return false;
 
             //if the last 2 digit is not 00-59, error
-            if (int.Parse(base.GetCode().Substring(4, 2)) > 59)
+            if (int.Parse(base.GetCode().AsSpan(4, 2)) > 59)
                 return false;
 
             return true;

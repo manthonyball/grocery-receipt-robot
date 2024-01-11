@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
+using System.Linq;
 
 class Program
 {
@@ -14,21 +15,35 @@ class Program
         AutomatedDrivers.ConfigureDriver(settings);
         Utility.Configure(settings);
 
-        //////// start test case setting
-
-        ProjectDTO projectConfig = new ProjectDTO()
+        //////// start test case setting 
+        ProjectDTO projectData = new ProjectDTO()
         {
-            receiptCode = "122923 123219 1698 02809"
+            receiptCode = "010624 123219 1698 02809"
         };
         //////// end test case setting
 
         /////start testing  
 
         //start the job 
-        AutomatedDrivers.GetInstanceDriver().Navigate().GoToUrl(Utility.GetURL());
-        foreach (IWorkItems aJob in JobList.GetJobList())
-            aJob.ExecuteItems(settings, projectConfig);
-
+        try
+        {
+            AutomatedDrivers.GetInstanceDriver().Navigate().GoToUrl(Utility.GetURL());
+            var jobList = JobList.GetJobList();
+            if (jobList.Any())
+                foreach (IWorkItems aJob in jobList)
+                    aJob.ExecuteItems(settings, projectData);
+            else
+                Utility.LogInfo("No job to run");
+        }
+        catch (Exception e)
+        {
+            Utility.LogInfo("Exception found: " + e.Message);
+            throw;
+        }
+        finally
+        {
+            AutomatedDrivers.TurnOffDeMachine();
+        }
         Utility.LogInfo("--------------------------------------");
         Console.ReadKey();
 
