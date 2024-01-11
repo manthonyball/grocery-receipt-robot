@@ -4,6 +4,8 @@
 # production 
 /ca-grocery-receipt-Selenium/bin
 /ca-grocery-receipt-Selenium/obj
+/test-grcery-receipt/bin
+/test-grcery-receipt/obj
 
 *.exe
 
