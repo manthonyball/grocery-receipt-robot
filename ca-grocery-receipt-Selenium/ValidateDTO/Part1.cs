@@ -21,7 +21,7 @@ namespace ValidateDTO
         /// return false if the code is invalid
         /// </summary>
         /// 
-        internal override bool Validate()
+        public override bool Validate()
         {
             //format validation
             if (!base.Validate())
@@ -34,7 +34,7 @@ namespace ValidateDTO
             //biz logic validation
             int month = int.Parse(base.GetCode().AsSpan(0, 2));
             int day = int.Parse(base.GetCode().AsSpan(2, 2));
-            int year = int.Parse(base.GetCode().AsSpan(4, 2)) + 2000;
+            int year = int.Parse(base.GetCode().AsSpan(4, 2)) + (DateTime.Now.Year/1000 ) * 1000;
 
             //to handle mmddyy / ddmmyy format ; relational pattern matching
             if (month is > 12 and < 32)
