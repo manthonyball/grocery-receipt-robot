@@ -21,7 +21,7 @@ namespace ValidateDTO
         /// </summary> 
         /// <returns>bool</returns>
         ///
-        internal override bool Validate()
+        public override bool Validate()
         {
             if (!base.Validate())
                 return false;
