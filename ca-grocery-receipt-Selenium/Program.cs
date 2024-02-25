@@ -18,7 +18,8 @@ class Program
         //////// start test case setting 
         ProjectDTO projectData = new ProjectDTO()
         {
-            receiptCode = "010624 123219 1698 02809"
+            receiptCode = $"{Utility.GetYesterdayInSpecificFormat()} " +
+                          $"{Utility.GetCurrentTimePortionInSpecificFormat()} 1698 02809"
         };
         //////// end test case setting
 

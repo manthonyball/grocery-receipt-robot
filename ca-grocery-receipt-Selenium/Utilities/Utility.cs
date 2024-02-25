@@ -29,7 +29,8 @@ public static class Utility
 
     public static int GetYearIn2Digi() => DateTime.Now.Year % 100;
     public static bool DateTimeExactParser(string dValue, string format) => DateTime.TryParseExact(dValue, format, null, DateTimeStyles.None, out DateTime Date2);
-
+    public static string GetYesterdayInSpecificFormat(string format = "MMddyy") => DateTime.Now.AddDays(-1).ToString(format);
+    public static string GetCurrentTimePortionInSpecificFormat(string format = "hhmmss") => DateTime.Now.ToString(format);
     public static string GetMonthEngName(int i)
     {
         System.Globalization.CultureInfo ci = new System.Globalization.CultureInfo("en-US");
