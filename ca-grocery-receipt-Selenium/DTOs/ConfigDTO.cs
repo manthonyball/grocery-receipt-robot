@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+[DebuggerDisplay("{DebuggerDisplay,nq}")]
 public record ConfigDTO(char environment,
     char gender,
     string language,
@@ -10,7 +12,16 @@ public record ConfigDTO(char environment,
     string lName,
     string phoneName,
     string email
-    );
+    )
+{ 
+    private string DebuggerDisplay
+    {
+        get
+        {
+            return $"We got these on config: {environment} ; {gender} ; {language} ; {_timeout_second} ; {driver_path} ; {logPath} ; {url} ; {fName} ; {lName} ; {phoneName} ; {email}";
+        }
+    }
+}; 
 
 public class ConfigDTO_OldWay
 {

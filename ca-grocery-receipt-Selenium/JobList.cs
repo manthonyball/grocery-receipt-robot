@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using JobSetUp = (string jobName, bool isExecute, int jobOrder);
 public static class JobList
 {
     /**********
      * How to add a new job :
-     * deJobSetUp.Item1: job name ; 
-     * deJobSetUp.Item2: if true, run the job, otherwise, not run ; 
-     * deJobSetUp.Item3: order of the job ;
+     * deJobSetUp.jobName: job name ; 
+     * deJobSetUp.isExecute: if true, run the job, otherwise, not run ; 
+     * deJobSetUp.jobOrder: order of the job ;
      * if diveded by 10 has no remainder => major step; otherwise, optional items
      ***********/
 
-    private static List<(string, bool, int)> deJobSetUp = new List<(string, bool, int)>()
+    private static List<JobSetUp> deJobSetUp = new List<JobSetUp>()
      {
         ("FillTheReceiptCode", true, 10),
         ("FillTheForm", true, 20) 
@@ -31,10 +32,10 @@ public static class JobList
         if (deJobSetUp.Count == 0)
             yield break;
 
-        foreach (var aJob in deJobSetUp.OrderBy(i => i.Item3))
+        foreach (var aJob in deJobSetUp.OrderBy(i => i.jobOrder))
         {
-            if (aJob.Item2)
-                yield return GetAJob(aJob.Item1);
+            if (aJob.isExecute)
+                yield return GetAJob(aJob.jobName);
         }
     }
 }
