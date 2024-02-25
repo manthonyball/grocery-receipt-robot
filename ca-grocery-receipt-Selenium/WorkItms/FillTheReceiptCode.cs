@@ -36,10 +36,12 @@ namespace WebpageWorker
             Part3 part3 = new Part3(parts[2]);
             Part4 part4 = new Part4(parts[3]);
 
-            if (part1.Validate() && part2.Validate() && part3.Validate() && part4.Validate())
+            if (IsItValid(part1, part2, part3, part4))
                 return (part1, part2, part3, part4);
             else
                 throw new Exception("Invalid receipt code");
         }
+        private bool IsItValid(Part1 part1, Part2 part2, Part3 part3, Part4 part4)
+            => part1.Validate() && part2.Validate() && part3.Validate() && part4.Validate();
     }
 }
