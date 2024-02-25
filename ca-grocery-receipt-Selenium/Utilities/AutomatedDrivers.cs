@@ -35,7 +35,7 @@ public static class AutomatedDrivers
 
         //InternetExplorerOptions op = new InternetExplorerOptions(); 
         //  op.IntroduceInstabilityByIgnoringProtectedModeSettings=true;
-        //https://chromedriver.chromium.org/downloads 
+        // https://googlechromelabs.github.io/chrome-for-testing/
         // using (IWebDriver driver = new InternetExplorerDriver(@"C:\TFS\seleniumDriver", op)) {
         // using (IWebDriver driver = new FirefoxDriver(@"C:\TFS\seleniumDriver")) {
         // using (IWebDriver driver = new EdgeDriver(@"C:\TFS\seleniumDriver\edgedriver_win64\")) {
