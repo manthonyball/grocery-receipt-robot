@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+[DebuggerDisplay("We got these on config: {environment};{gender};{language};{_timeout_second};{driver_path};{logPath};{url};{fName};{lName};{phoneName};{email]")]
 public record ConfigDTO(char environment,
     char gender,
     string language,
