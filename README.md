@@ -1,6 +1,6 @@
 #  data entry using Selenium 
 This repository is to automate the repetitive data entry action of the grocey feedback form using Selenium. 
-Here, the adopted framework is Dot Not 8 with OpenQA.
+Here, the adopted framework is Dot Net 8 with OpenQA.
 
 A. Dot Net Framework set-up
   1. Right click on the *.csproj 
